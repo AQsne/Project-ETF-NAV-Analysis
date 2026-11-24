@@ -28,7 +28,7 @@ def charger_nav(tickers=TICKERS):
             URL_NAV.format(ticker_minuscule),
             header=3,
             usecols="A:D",
-        ).dropna(axis=1, how="all")
+        ).dropna(how="all").dropna(axis=1, how="all")
         if not {"Date", "NAV"}.issubset(nav.columns):
             raise ValueError(f"Colonnes Date et NAV absentes pour {ticker}.")
 

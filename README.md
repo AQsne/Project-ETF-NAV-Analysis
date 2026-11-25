@@ -1,88 +1,87 @@
 # ETF NAV vs. Market Price
 
-Analyse empirique des écarts entre la valeur nette des actifs (NAV) et le prix de marché de quatre ETF américains.
+Empirical analysis of the deviations between the net asset value (NAV) and the market price of four U.S. ETFs.
 
-## Question de recherche
+## Research question
 
-Un ETF et le portefeuille sous-jacent qu’il réplique représentent une exposition proche, mais leurs prix peuvent temporairement diverger. Ce projet mesure ces primes et décotes, puis étudie leur relation avec la volatilité, le volume d’échange et la correction observée lors de la séance suivante.
+An ETF and the underlying portfolio it tracks provide similar exposure, but their prices can temporarily diverge. This project measures these premiums and discounts, then studies their relationship with volatility, trading volume, and the correction observed during the following session.
 
-## Résultats principaux
+## Main results
 
-Les résultats ci-dessous proviennent de l'échantillon fusionné entre les historiques de NAV et les prix de clôture, soit **3 601 dates communes par ETF**, du **19 juin 2012 au 14 octobre 2026**.
+The results below come from the merged NAV and closing-price histories, with **3,601 common dates per ETF**, from **June 19, 2012 to October 14, 2026**.
 
-### 1. Écarts NAV / prix de marché
+### 1. NAV / market-price deviations
 
-| ETF | Prime/décote moyenne | Médiane | Écart absolu moyen | Écart absolu maximal | Jours > 0,25 % | Jours > 0,5 % | Jours > 1 % |
+| ETF | Mean premium/discount | Median | Mean absolute deviation | Maximum absolute deviation | Days > 0.25% | Days > 0.5% | Days > 1% |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| SPY | 0,0020 % | 0,0036 % | 0,0242 % | 0,9004 % | 0,3055 % | 0,0555 % | 0,0000 % |
-| SPEM | 0,0759 % | 0,1046 % | 0,4514 % | 4,3401 % | 63,6768 % | 35,0736 % | 8,0533 % |
-| SPIB | 0,0913 % | 0,0570 % | 0,1315 % | 6,1028 % | 15,3291 % | 3,8600 % | 0,3055 % |
-| SPHY | 0,1632 % | 0,1483 % | 0,3336 % | 4,4806 % | 45,4041 % | 19,7445 % | 6,1927 % |
+| SPY | 0.0020% | 0.0036% | 0.0242% | 0.9004% | 0.3055% | 0.0555% | 0.0000% |
+| SPEM | 0.0759% | 0.1046% | 0.4514% | 4.3401% | 63.6768% | 35.0736% | 8.0533% |
+| SPIB | 0.0913% | 0.0570% | 0.1315% | 6.1028% | 15.3291% | 3.8600% | 0.3055% |
+| SPHY | 0.1632% | 0.1483% | 0.3336% | 4.4806% | 45.4041% | 19.7445% | 6.1927% |
 
-**Lecture des résultats :**
+**Interpretation:**
 
-- **SPY** est l'ETF le plus proche de sa NAV : l'écart absolu moyen est de **0,0242 %** et dépasse 0,25 % sur seulement **0,3055 %** des jours.
-- **SPEM** présente l'écart moyen le plus élevé (**0,4514 %**) et dépasse 0,25 % sur **63,6768 %** des jours.
-- **SPHY** affiche également des écarts fréquents (**0,3336 %** en moyenne ; **45,4041 %** des jours au-dessus de 0,25 %).
-- **SPIB** se situe entre les ETF actions et le high yield (**0,1315 %** en moyenne).
-- Les primes/décotes moyennes sont positives pour les quatre ETF : le prix de marché est en moyenne légèrement supérieur à la NAV.
+- **SPY** is the ETF closest to its NAV: its mean absolute deviation is **0.0242%**, exceeding 0.25% on only **0.3055%** of days.
+- **SPEM** has the highest mean absolute deviation (**0.4514%**) and exceeds 0.25% on **63.6768%** of days.
+- **SPHY** also shows frequent deviations (**0.3336%** on average; **45.4041%** of days above 0.25%).
+- **SPIB** lies between the equity ETFs and the high-yield ETF (**0.1315%** on average).
+- Mean premiums/discounts are positive for all four ETFs: the market price is, on average, slightly above the NAV.
 
-### 2. Effet de la volatilité
+### 2. Volatility effect
 
-Le VIX définit les régimes suivants : volatilité faible si **VIX < 15** et forte si **VIX ≥ 30**. La comparaison porte uniquement sur ces deux régimes.
+The VIX defines the following regimes: low volatility when **VIX < 15** and high volatility when **VIX ≥ 30**. The comparison uses only these two regimes.
 
-| Catégorie | Régime | Nombre de jours | Prime/décote moyenne | Écart absolu moyen |
+| Category | Regime | Number of days | Mean premium/discount | Mean absolute deviation |
 | --- | --- | ---: | ---: | ---: |
-| Actions américaines | Faible | 1 446 | 0,0023 % | 0,0202 % |
-| Actions américaines | Forte | 158 | −0,0186 % | 0,0671 % |
-| Actions émergentes | Faible | 1 446 | 0,1876 % | 0,3752 % |
-| Actions émergentes | Forte | 158 | −0,3442 % | 0,8283 % |
-| Obligations investment grade | Faible | 1 446 | 0,1214 % | 0,1314 % |
-| Obligations investment grade | Forte | 158 | −0,1393 % | 0,3412 % |
-| Obligations high yield | Faible | 1 446 | 0,1880 % | 0,3323 % |
-| Obligations high yield | Forte | 158 | 0,0759 % | 0,5096 % |
+| U.S. equities | Low | 1,446 | 0.0023% | 0.0202% |
+| U.S. equities | High | 158 | −0.0186% | 0.0671% |
+| Emerging-market equities | Low | 1,446 | 0.1876% | 0.3752% |
+| Emerging-market equities | High | 158 | −0.3442% | 0.8283% |
+| Investment-grade bonds | Low | 1,446 | 0.1214% | 0.1314% |
+| Investment-grade bonds | High | 158 | −0.1393% | 0.3412% |
+| High-yield bonds | Low | 1,446 | 0.1880% | 0.3323% |
+| High-yield bonds | High | 158 | 0.0759% | 0.5096% |
 
-**Résultat :** l'écart absolu moyen augmente dans les quatre catégories lorsque la volatilité passe d'un régime faible à un régime fort. L'effet est particulièrement marqué pour les actions émergentes (**0,3752 % → 0,8283 %**).
+**Result:** the mean absolute deviation increases in all four categories when volatility moves from a low to a high regime. The effect is especially pronounced for emerging-market equities (**0.3752% → 0.8283%**).
 
-### 3. Effet du volume d'échange
+### 3. Trading-volume effect
 
-Les régimes de liquidité sont définis séparément pour chaque ETF à partir des quartiles de volume. Le volume constitue un proxy imparfait de la liquidité.
+Liquidity regimes are defined separately for each ETF using volume quartiles. Volume is an imperfect proxy for liquidity.
 
-| Catégorie | Régime de volume | Nombre de jours | Prime/décote moyenne | Écart absolu moyen |
+| Category | Volume regime | Number of days | Mean premium/discount | Mean absolute deviation |
 | --- | --- | ---: | ---: | ---: |
-| Actions américaines | Faible | 901 | 0,0067 % | 0,0199 % |
-| Actions américaines | Fort | 901 | −0,0029 % | 0,0332 % |
-| Actions émergentes | Faible | 901 | 0,0668 % | 0,4164 % |
-| Actions émergentes | Fort | 901 | 0,0563 % | 0,5442 % |
-| Obligations investment grade | Faible | 901 | 0,2398 % | 0,2503 % |
-| Obligations investment grade | Fort | 901 | 0,0304 % | 0,0618 % |
-| Obligations high yield | Faible | 903 | 0,1574 % | 0,4625 % |
-| Obligations high yield | Fort | 901 | 0,1088 % | 0,1722 % |
+| U.S. equities | Low | 901 | 0.0067% | 0.0199% |
+| U.S. equities | High | 901 | −0.0029% | 0.0332% |
+| Emerging-market equities | Low | 901 | 0.0668% | 0.4164% |
+| Emerging-market equities | High | 901 | 0.0563% | 0.5442% |
+| Investment-grade bonds | Low | 901 | 0.2398% | 0.2503% |
+| Investment-grade bonds | High | 901 | 0.0304% | 0.0618% |
+| High-yield bonds | Low | 903 | 0.1574% | 0.4625% |
+| High-yield bonds | High | 901 | 0.1088% | 0.1722% |
 
-**Résultat :** l'effet du volume est hétérogène. L'écart augmente avec le volume pour les actions américaines et émergentes, tandis qu'il diminue pour les obligations : **0,2503 % → 0,0618 %** pour SPIB et **0,4625 % → 0,1722 %** pour SPHY.
+**Result:** the volume effect is heterogeneous. Deviation increases with volume for U.S. and emerging-market equities, while it decreases for bonds: **0.2503% → 0.0618%** for SPIB and **0.4625% → 0.1722%** for SPHY.
 
-### 4. Correction lors de la séance suivante
+### 4. Correction during the following session
 
-Les observations retenues sont celles dont l'écart absolu est supérieur ou égal à **0,25 %**. Une correction correspond à une diminution de l'écart absolu le jour suivant.
+The selected observations are those with an absolute deviation greater than or equal to **0.25%**. A correction is a decrease in the absolute deviation on the following day.
 
-| ETF | Dates analysées | Taux de correction | Variation moyenne de l'écart à 1 jour |
+| ETF | Dates analyzed | Correction rate | Mean one-day change in deviation |
 | --- | ---: | ---: | ---: |
-| SPY | 11 | 100,0000 % | −0,3203 point de pourcentage |
-| SPEM | 2 292 | 68,6736 % | −0,1663 point de pourcentage |
-| SPHY | 1 635 | 67,2783 % | −0,1050 point de pourcentage |
-| SPIB | 552 | 65,2174 % | −0,0526 point de pourcentage |
+| SPY | 11 | 100.0000% | −0.3203 percentage points |
+| SPEM | 2,292 | 68.6736% | −0.1663 percentage points |
+| SPHY | 1,635 | 67.2783% | −0.1050 percentage points |
+| SPIB | 552 | 65.2174% | −0.0526 percentage points |
 
-**Résultat :** les écarts importants diminuent lors de la séance suivante dans la majorité des cas. Le résultat de **SPY** doit être interprété avec prudence, car il repose sur seulement **11 observations**.
+**Result:** large deviations decrease during the following session in most cases. The **SPY** result should be interpreted cautiously because it is based on only **11 observations**.
 
-### Conclusion empirique
+### Empirical conclusion
 
-Les écarts entre la NAV et le prix de marché restent faibles pour SPY, mais deviennent plus importants pour les ETF exposés aux marchés émergents et aux obligations high yield. Ils s'amplifient généralement lorsque la volatilité est forte et tendent souvent à se réduire dès la séance suivante. Ces résultats décrivent des régularités statistiques dans l'échantillon ; ils n'établissent pas une relation de causalité.
+Deviations between NAV and market price remain small for SPY, but become larger for ETFs exposed to emerging markets and high-yield bonds. They generally widen when volatility is high and often begin to narrow during the following session. These results describe statistical regularities in the sample; they do not establish a causal relationship.
 
-## Sources et limites
+## Sources and limitations
 
-- NAV : [State Street Global Advisors — ETF fund data](https://www.ssga.com/us/en/intermediary/etfs/resources/fund-data)
-- Prix et volumes : [Yahoo Finance](https://finance.yahoo.com/)
-- Volatilité : indice VIX téléchargé via Yahoo Finance
+- NAV: [State Street Global Advisors — ETF fund data](https://www.ssga.com/us/en/intermediary/etfs/resources/fund-data)
+- Prices and volumes: [Yahoo Finance](https://finance.yahoo.com/)
+- Volatility: VIX index downloaded through Yahoo Finance
 
-La NAV et le cours de clôture peuvent correspondre à des horaires ou conventions de valorisation différents. Le volume est un proxy imparfait de la liquidité et l’analyse décrit des associations, sans établir de causalité.
-
+The NAV and closing price may correspond to different timestamps or valuation conventions. Volume is an imperfect proxy for liquidity, and the analysis describes associations without establishing causality.
